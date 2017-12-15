@@ -2,21 +2,37 @@ package br.com.netgifx.model.gif;
 
 import java.time.LocalDate;
 
-import br.com.netgifx.model.Usuario;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "gif")
 public class Gif {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
 	
+	@Column(name = "titulo")
 	private String titulo;
 	
+	@Column(name = "descricao")
 	private String descricao;
 	
+	@Column(name = "data_cadastro")
 	private LocalDate dataCadastro;
 	
+	@ManyToOne(fetch = FetchType.LAZY) 
+	@JoinColumn(name="id_categoria")
 	private Categoria categoria;
-	
-	private Usuario usuariosQueFavoritaram;
 
 	public int getId() {
 		return id;
@@ -57,14 +73,5 @@ public class Gif {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-
-	public Usuario getUsuariosQueFavoritaram() {
-		return usuariosQueFavoritaram;
-	}
-
-	public void setUsuariosQueFavoritaram(Usuario usuariosQueFavoritaram) {
-		this.usuariosQueFavoritaram = usuariosQueFavoritaram;
-	}
-	
 	
 }
