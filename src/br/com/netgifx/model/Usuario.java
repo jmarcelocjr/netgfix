@@ -1,5 +1,8 @@
 package br.com.netgifx.model;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.util.Base64;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -79,8 +82,10 @@ public class Usuario {
 		return senha;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setSenha(String senha) throws Exception {
+		MessageDigest digest = MessageDigest.getInstance("SHA-256");
+		byte[] hash = digest.digest(senha.getBytes(StandardCharsets.UTF_8));
+		this.senha = Base64.getEncoder().encodeToString(hash);
 	}
 
 	public Role getRole() {
