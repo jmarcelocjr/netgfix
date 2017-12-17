@@ -103,4 +103,8 @@ public class Usuario {
 	public void setGifsFavoritos(List<Gif> gifsFavoritos) {
 		this.gifsFavoritos = gifsFavoritos;
 	}
+	
+	public boolean isAdmin() {
+		return this.role == Role.ADMIN;
+	}
 }
