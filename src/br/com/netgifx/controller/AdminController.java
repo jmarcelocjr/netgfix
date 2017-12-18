@@ -14,33 +14,33 @@ import br.com.netgifx.model.Usuario;
 @Controller
 public class AdminController {
 	
-	@RequestMapping(value = "/usuario", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/usuario", method = RequestMethod.GET)
 	public String formularioUsuario(Model model) {
 		Role[] roles = Role.values();
 		
 		model.addAttribute("roles", roles);
 		
-		return "form-usuario";
+		return "admin/form-usuario";
 	}
 	
-	@RequestMapping(value = "/usuarios")
+	@RequestMapping(value = "/admin/usuarios", method = RequestMethod.GET)
 	public String listarUsuarios(Model model) {
 		UsuarioDao usuarioDao = new UsuarioDao();
 		List<Usuario> usuarios = usuarioDao.listar();
 
 		model.addAttribute("usuarios", usuarios);
 
-		return "lista-usuarios";
+		return "admin/lista-usuarios";
 	}
 	
-	@RequestMapping(value = "/usuario", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/usuario", method = RequestMethod.POST)
 	public String cadastrarUsuario(Usuario usuario, Model model) {
 		UsuarioDao usuarioDao = new UsuarioDao();
 
 		boolean hasSaved = usuarioDao.cadastra(usuario);
 		model.addAttribute("hasSaved", hasSaved);
 
-		return "redirect:/usuarios";
+		return "redirect:/admin/usuarios";
 	}
 	
 	
