@@ -4,31 +4,25 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Lista de Usuários</title>
+		<title>Lista de Categorias</title>
 	</head>
 	<body>
 		<div>
-			<h1>Lista de Usuarios</h1>
+			<h1>Lista de Gifs</h1>
 			<br/>
-			<a href=<c:url value="/admin/usuario" /> >Novo</a>
+			<a href=<c:url value="/admin/gif" /> >Novo</a>
 		</div>
 		<br/>
 		<table>
 			<thead>
 				<tr>
-					<th>Id</th>
-					<th>Nome</th>
-					<th>Email</th>
-					<th>Tipo</th>	
+					<th>Gif</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="usuario" items="${usuarios}">
+				<c:forEach var="gif" items="${gifs}">
 					<tr>
-						<td>${usuario.id}</td>
-						<td>${usuario.nome}</td>
-						<td>${usuario.email}</td>
-						<td>${usuario.role}</td>
+						<td>${gif.titulo}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
