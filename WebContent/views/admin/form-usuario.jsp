@@ -7,7 +7,7 @@
 		<title>Cadstro Usuario</title>
 	</head>
 	<body>
-		<form action=<c:url value="/usuario"/> method="POST">
+		<form action=<c:url value="/admin/usuario"/> method="POST">
 			Nome: <input type="text" name="nome" />
 			Email: <input type="text" name="email" />
 			Senha: <input type="password" name="senha" />
