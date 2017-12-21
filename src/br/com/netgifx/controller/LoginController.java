@@ -1,16 +1,12 @@
 package br.com.netgifx.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.netgifx.dao.UsuarioDao;
-import br.com.netgifx.model.Role;
 import br.com.netgifx.model.Usuario;
 
 @Controller
@@ -37,6 +33,6 @@ public class LoginController {
 			
 			session.setAttribute("usuario", usuario);
 			
-			return (usuario.isAdmin())? "redirect:/admin" : "redirect:/home";
+			return (usuario.isAdmin())? "redirect:/admin" : "redirect:/dashboard";
 		}
 }
