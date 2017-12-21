@@ -45,6 +45,19 @@ public class UsuarioDao {
 		return usuario;
 
 	}
+	
+	public Usuario buscarEmail(String email) {
+		entityManager = this.getEntityManager();
+
+		entityManager.getTransaction().begin();
+		Usuario usuario = (Usuario) entityManager.createQuery("SELECT u FROM Usuario u WHERE u.email = :email")
+				.setParameter("email", email).getSingleResult();
+		entityManager.getTransaction().commit();
+		entityManager.close();
+
+		return usuario;
+
+	}
 
 	public List<Usuario> listar(){
 		entityManager = this.getEntityManager();
